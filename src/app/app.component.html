@@ -1,0 +1,37 @@
+<div *ngIf="isActive">Aktív</div>
+<div *ngIf="!isActive">Nem aktív</div>
+
+{{score}}
+<div *ngIf="score < 70">Megbukott</div>
+<div *ngIf="score >= 70">Nem bukott meg</div>
+
+<button (click)="changeIsActive()">Változtass!</button>
+<button (click)="changeScore()">Változtass értéket!</button>
+<br><br>
+
+<ul *ngIf="names.length !== 0">
+  <li *ngFor="let name of names">
+    <span *ngIf="name === 'Bill'">{{name}} Gates</span>
+    <span *ngIf="name !== 'Bill'">{{name}}</span>
+  </li>
+</ul>
+<br><br>
+
+<ul *ngIf="names.length !== 0">
+  <li *ngFor="let name of names">
+    <span *ngIf="name !== 'Bill'; else nameText">{{name}}</span>
+    <ng-template #nameText>{{name}} Gates</ng-template>
+  </li>
+</ul>
+<br><br>
+
+
+<div *ngIf="score < 70" class="red">A pontszámod: {{score}}</div>
+<div *ngIf="score >= 70" class="green">A pontszámod: {{score}}</div>
+<button (click)="changeScore()">Változtass értéket!</button>
+<br><br>
+
+<div [ngClass]="{'red': score < 70, 'green': score >= 70}">A pontszámod: {{score}}</div>
+<div [ngStyle]="{'font-size': score + 'px'}">{{score}}</div>
+<button (click)="changeScore()">Változtass értéket!</button>
+<br><br>
